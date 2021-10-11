@@ -77,6 +77,30 @@ class ThemeUtils {
     ),
   );
 
+  static InputDecorationTheme inputDecorationThemeLight = InputDecorationTheme(
+    enabledBorder: InputBorder.none,
+    disabledBorder: InputBorder.none,
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    focusedBorder: InputBorder.none,
+    filled: true,
+    fillColor: const Color(0xffF1F3F5),
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+  );
+
+  static InputDecorationTheme inputDecorationThemeDark = InputDecorationTheme(
+    enabledBorder: InputBorder.none,
+    disabledBorder: InputBorder.none,
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    focusedBorder: InputBorder.none,
+    filled: true,
+    fillColor: Colors.grey[900],
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+  );
+
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
@@ -87,6 +111,7 @@ class ThemeUtils {
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
+      inputDecorationTheme: inputDecorationThemeLight,
       primaryColor: const Color(0xFF506281),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
@@ -107,6 +132,7 @@ class ThemeUtils {
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[900],
       ),
+      inputDecorationTheme: inputDecorationThemeDark,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Color(0xFF506281),
