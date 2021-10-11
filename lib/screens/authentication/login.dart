@@ -8,7 +8,9 @@ const loginVectorPath = "assets/images/login-vector.svg";
 
 class Login extends StatefulWidget {
   static const String routeName = "/login";
-  const Login({Key? key}) : super(key: key);
+  final void Function() toggleScreen;
+
+  const Login({Key? key, required this.toggleScreen}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
@@ -101,7 +103,7 @@ class _LoginState extends State<Login> {
                   AuthTogleButton(
                     buttonTitle: "don’t have an account ?",
                     actionTitle: "sign up",
-                    onTap: () {},
+                    onTap: widget.toggleScreen,
                   )
                 ],
               ),

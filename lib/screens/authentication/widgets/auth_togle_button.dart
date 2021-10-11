@@ -11,7 +11,7 @@ class AuthTogleButton extends StatelessWidget {
 
   final String? buttonTitle;
   final String? actionTitle;
-  final Function? onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class AuthTogleButton extends StatelessWidget {
           style: Theme.of(context).textTheme.subtitle1,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: onTap,
           child: Text(
             actionTitle ?? "",
             style: const TextStyle(

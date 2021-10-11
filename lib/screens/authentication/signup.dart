@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 
 class Signup extends StatefulWidget {
   static const String routeName = "/signup";
-  const Signup({Key? key}) : super(key: key);
+
+  const Signup({Key? key, required this.toggleScreen}) : super(key: key);
+
+  final void Function() toggleScreen;
 
   @override
   State<Signup> createState() => _SignupState();
@@ -117,7 +120,7 @@ class _SignupState extends State<Signup> {
                   AuthTogleButton(
                     buttonTitle: "Already have an account ?",
                     actionTitle: "Login",
-                    onTap: () {},
+                    onTap: widget.toggleScreen,
                   )
                 ],
               ),

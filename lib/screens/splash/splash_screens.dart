@@ -1,3 +1,4 @@
+import 'package:eazeal/screens/authentication/authentication.dart';
 import 'package:eazeal/screens/authentication/login.dart';
 import 'package:eazeal/screens/onbording/onbording_screen.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Login();
+    return const Authentication();
   }
 }
