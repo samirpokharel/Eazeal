@@ -90,7 +90,9 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   onbordings.length,
-                  (index) => _buildIndicator(index),
+                  (index) => _buildIndicator(index, onTap: (int i) {
+                    _pageController.jumpToPage(index);
+                  }),
                 ),
               ),
               const SizedBox(height: 30),
@@ -123,17 +125,20 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
     );
   }
 
-  Widget _buildIndicator(int index) {
+  Widget _buildIndicator(int index, {required void Function(int) onTap}) {
     bool isCurrent = page == index;
-    return AnimatedContainer(
-      duration: const Duration(microseconds: 600),
-      curve: Curves.ease,
-      height: 10,
-      width: isCurrent ? 20 : 10,
-      margin: const EdgeInsets.only(right: 4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: isCurrent ? const Color(0xff506281) : const Color(0xffD3D3D3),
+    return GestureDetector(
+      onTap: () => onTap(index),
+      child: AnimatedContainer(
+        duration: const Duration(microseconds: 600),
+        curve: Curves.ease,
+        height: 10,
+        width: isCurrent ? 20 : 10,
+        margin: const EdgeInsets.only(right: 4),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: isCurrent ? const Color(0xff506281) : const Color(0xffD3D3D3),
+        ),
       ),
     );
   }
