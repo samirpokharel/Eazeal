@@ -87,6 +87,7 @@ class ThemeUtils {
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
+      primaryColor: const Color(0xFF506281),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
@@ -111,7 +112,7 @@ class ThemeUtils {
         backgroundColor: Color(0xFF506281),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor:  Color(0xFF506281),
+        selectedItemColor: Color(0xFF506281),
       ),
       textTheme: darkTextTheme,
     );
