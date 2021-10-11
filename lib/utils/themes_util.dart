@@ -1,0 +1,119 @@
+import 'package:flutter/material.dart';
+
+class ThemeUtils {
+  static TextTheme lightTextTheme = const TextTheme(
+    bodyText1: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.black,
+    ),
+    headline1: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.w700,
+      color: Colors.black,
+    ),
+    headline2: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    headline3: TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    button: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    subtitle1: TextStyle(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      color: Color(0xFF6A6A6A),
+    ),
+    subtitle2: TextStyle(
+      fontSize: 13.0,
+      fontWeight: FontWeight.w400,
+      color: Color(0xFF7B7B7B),
+    ),
+  );
+
+  static TextTheme darkTextTheme = const TextTheme(
+    bodyText1: TextStyle(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.white60,
+    ),
+    headline1: TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
+    headline2: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    headline3: TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    button: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    subtitle1: TextStyle(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      color: Colors.white54,
+    ),
+    subtitle2: TextStyle(
+      fontSize: 13.0,
+      fontWeight: FontWeight.w400,
+      color: Colors.white54,
+    ),
+  );
+
+  static ThemeData light() {
+    return ThemeData(
+      brightness: Brightness.light,
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStateColor.resolveWith((states) => Colors.black),
+      ),
+      appBarTheme: const AppBarTheme(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor: Color(0xFF506281),
+      ),
+      textTheme: lightTextTheme,
+    );
+  }
+
+  // 4
+  static ThemeData dark() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      appBarTheme: AppBarTheme(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.grey[900],
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        foregroundColor: Colors.white,
+        backgroundColor: Color(0xFF506281),
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor:  Color(0xFF506281),
+      ),
+      textTheme: darkTextTheme,
+    );
+  }
+}
