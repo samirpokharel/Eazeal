@@ -1,5 +1,6 @@
 import 'package:eazeal/config/constants.dart';
 import 'package:eazeal/screens/authentication/widgets/widgets.dart';
+import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/services/validation_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -78,7 +79,10 @@ class _LoginState extends State<Login> {
                   Align(
                     alignment: Alignment.topRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        ForgotPassword.routeName,
+                      ),
                       child: const Text(
                         "Forgot Password ?",
                         style: TextStyle(

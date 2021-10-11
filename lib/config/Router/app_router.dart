@@ -1,3 +1,4 @@
+import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/screens/splash/splash_screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ class AppRouter {
       switch (settings.name) {
         case SplashScreen.routeName:
           return SplashScreen();
+        case ForgotPassword.routeName:
+          return const ForgotPassword();
         default:
           return _error();
       }
