@@ -83,6 +83,7 @@ class ThemeUtils {
     disabledBorder: InputBorder.none,
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.red),
     ),
     focusedBorder: InputBorder.none,
     filled: true,
@@ -95,6 +96,7 @@ class ThemeUtils {
     disabledBorder: InputBorder.none,
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.red), 
     ),
     focusedBorder: InputBorder.none,
     filled: true,
