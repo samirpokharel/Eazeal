@@ -1,3 +1,4 @@
+import 'package:eazeal/config/constants.dart';
 import 'package:flutter/material.dart';
 
 class ThemeUtils {
@@ -112,13 +113,13 @@ class ThemeUtils {
         backgroundColor: Colors.white,
       ),
       inputDecorationTheme: inputDecorationThemeLight,
-      primaryColor: const Color(0xFF506281),
+      primaryColor: primaryColor,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Color(0xFF506281),
+        selectedItemColor: primaryColor,
       ),
       textTheme: lightTextTheme,
     );
@@ -135,10 +136,10 @@ class ThemeUtils {
       inputDecorationTheme: inputDecorationThemeDark,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xFF506281),
+        backgroundColor: primaryColor,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Color(0xFF506281),
+        selectedItemColor: primaryColor,
       ),
       textTheme: darkTextTheme,
     );

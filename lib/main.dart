@@ -22,6 +22,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeUtils.light(),
       onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: SplashScreen.routeName,
+      // initialRoute: "/dfd",
     );
   }
 }
