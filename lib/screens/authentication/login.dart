@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 const loginVectorPath = "assets/images/login-vector.svg";
 
 class Login extends StatelessWidget {
+  static const String routeName = "/login";
   const Login({Key? key}) : super(key: key);
 
   @override
@@ -56,8 +57,14 @@ class Login extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   AuthButton(
-                    onPressed: () {},
                     text: "Login",
+                    onPressed: () {},
+                  ),
+                  const SizedBox(height: 20),
+                  AuthTogleButton(
+                    buttonTitle: "don’t have an account ?",
+                    actionTitle: "sign up",
+                    onTap: () {},
                   )
                 ],
               ),
