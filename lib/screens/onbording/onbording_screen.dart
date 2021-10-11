@@ -49,14 +49,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                 constraints: const BoxConstraints.expand(height: 500),
                 child: PageView.builder(
                   controller: _pageController,
-                  // onPageChanged: (int page) {
-                  // setState(() {
-                  //     currentPage = page;
-                  // });
-                  // },
                   onPageChanged: (int page) {
-                    print('page $page');
-
                     _pageController.animateToPage(
                       page,
                       duration: const Duration(milliseconds: 600),
@@ -103,7 +96,6 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                 children: List.generate(
                   onbordings.length,
                   (index) => _buildIndicator(index, onTap: () {
-                    print("Index: $index");
                     _pageController.animateToPage(
                       index,
                       duration: const Duration(milliseconds: 600),
