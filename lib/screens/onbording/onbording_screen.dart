@@ -15,7 +15,7 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
   int page = 0;
   @override
   void initState() {
-    _pageController = PageController(initialPage: 0);
+    _pageController = PageController();
     super.initState();
   }
 
@@ -90,8 +90,15 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   onbordings.length,
-                  (index) => _buildIndicator(index, onTap: (int i) {
-                    _pageController.jumpToPage(index);
+                  (index) => _buildIndicator(index, onTap: () {
+                    print(index);
+                    setState(() {
+                      _pageController.animateToPage(
+                        index,
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.ease,
+                      );
+                    });
                   }),
                 ),
               ),
@@ -125,10 +132,10 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
     );
   }
 
-  Widget _buildIndicator(int index, {required void Function(int) onTap}) {
+  Widget _buildIndicator(int index, {required void Function() onTap}) {
     bool isCurrent = page == index;
     return GestureDetector(
-      onTap: () => onTap(index),
+      onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(microseconds: 600),
         curve: Curves.ease,
