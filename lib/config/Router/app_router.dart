@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class AppRouter {
   static Route<CupertinoPageRoute> onGenerateRoute(RouteSettings settings) {
+    debugPrint("Route:${settings.name}");
     return CupertinoPageRoute(builder: (_) {
       switch (settings.name) {
         case SplashScreen.routeName:
