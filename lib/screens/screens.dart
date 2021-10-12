@@ -1,4 +1,5 @@
 export './splash/splash_screens.dart';
+export './Error/error_screen.dart';
 
 export './onbording/onbording_screen.dart';
 
