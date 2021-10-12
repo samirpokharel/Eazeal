@@ -1,8 +1,8 @@
-import 'package:eazeal/config/preferences.dart';
-import 'package:eazeal/screens/onbording/onbording_screen.dart';
-import 'package:eazeal/screens/splash/splash_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:rx_shared_preferences/rx_shared_preferences.dart';
+
+import 'package:eazeal/config/preferences.dart';
+import 'package:eazeal/screens/screens.dart';
 
 class Wrapper extends StatelessWidget {
   static const String routeName = "/wrapper";

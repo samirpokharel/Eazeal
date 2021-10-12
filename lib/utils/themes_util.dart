@@ -96,7 +96,7 @@ class ThemeUtils {
     disabledBorder: InputBorder.none,
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: Colors.red), 
+      borderSide: const BorderSide(color: Colors.red),
     ),
     focusedBorder: InputBorder.none,
     filled: true,
@@ -120,8 +120,9 @@ class ThemeUtils {
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedItemColor: primaryColor,
+        unselectedItemColor: Colors.grey[500],
       ),
       textTheme: lightTextTheme,
     );
@@ -140,8 +141,9 @@ class ThemeUtils {
         foregroundColor: Colors.white,
         backgroundColor: primaryColor,
       ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedItemColor: primaryColor,
+        unselectedItemColor: Colors.grey[300],
       ),
       textTheme: darkTextTheme,
     );
