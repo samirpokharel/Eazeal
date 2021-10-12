@@ -9,12 +9,14 @@ abstract class BaseAuthRepository {
     required String password,
   });
 
+  Stream<String?> get onUserChanges;
+
   Future<User> activateAccount({required String token});
   Future<User> loginInWithEmailAndPassowrd({
     required String email,
     required String password,
   });
   Future<void> forgotPassword({required String email});
-  Future<User> resetPassword({required String password});
- 
+  Future<User> resetPassword({required String password, required String token});
+  Future<void> logout();
 }
