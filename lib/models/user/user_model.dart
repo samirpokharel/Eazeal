@@ -20,17 +20,16 @@ abstract class User with _$User {
     required String lastName,
     required String phoneNumber,
     required String fullAddress,
-    int? v,
   }) = _User;
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   factory User.empty() => const User(
         email: "",
         firstName: "",
-        lastName: "",
         fullAddress: "",
         phoneNumber: "",
         id: "",
+        lastName: "",
       );
 
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

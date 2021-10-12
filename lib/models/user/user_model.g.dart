@@ -14,13 +14,12 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       wishlists: json['wishlists'] as int? ?? 0,
       reviews: json['reviews'] as int? ?? 0,
       numOfProductsInCart: json['numOfProductsInCart'] as int? ?? 0,
-      id: json['id'] as String,
+      id: json['_id'] as String ?? "",
       email: json['email'] as String,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       phoneNumber: json['phoneNumber'] as String,
       fullAddress: json['fullAddress'] as String,
-      v: json['v'] as int?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -31,11 +30,10 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'wishlists': instance.wishlists,
       'reviews': instance.reviews,
       'numOfProductsInCart': instance.numOfProductsInCart,
-      'id': instance.id,
+      '_id': instance.id,
       'email': instance.email,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'phoneNumber': instance.phoneNumber,
       'fullAddress': instance.fullAddress,
-      'v': instance.v,
     };

@@ -34,8 +34,7 @@ class _$UserTearOff {
       required String firstName,
       required String lastName,
       required String phoneNumber,
-      required String fullAddress,
-      int? v}) {
+      required String fullAddress}) {
     return _User(
       role: role,
       pendingOrders: pendingOrders,
@@ -50,7 +49,6 @@ class _$UserTearOff {
       lastName: lastName,
       phoneNumber: phoneNumber,
       fullAddress: fullAddress,
-      v: v,
     );
   }
 
@@ -77,7 +75,6 @@ mixin _$User {
   String get lastName => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   String get fullAddress => throw _privateConstructorUsedError;
-  int? get v => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -101,8 +98,7 @@ abstract class $UserCopyWith<$Res> {
       String firstName,
       String lastName,
       String phoneNumber,
-      String fullAddress,
-      int? v});
+      String fullAddress});
 }
 
 /// @nodoc
@@ -128,7 +124,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? lastName = freezed,
     Object? phoneNumber = freezed,
     Object? fullAddress = freezed,
-    Object? v = freezed,
   }) {
     return _then(_value.copyWith(
       role: role == freezed
@@ -183,10 +178,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.fullAddress
           : fullAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      v: v == freezed
-          ? _value.v
-          : v // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -209,8 +200,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String firstName,
       String lastName,
       String phoneNumber,
-      String fullAddress,
-      int? v});
+      String fullAddress});
 }
 
 /// @nodoc
@@ -237,7 +227,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? lastName = freezed,
     Object? phoneNumber = freezed,
     Object? fullAddress = freezed,
-    Object? v = freezed,
   }) {
     return _then(_User(
       role: role == freezed
@@ -292,10 +281,6 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.fullAddress
           : fullAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      v: v == freezed
-          ? _value.v
-          : v // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -316,8 +301,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       required this.firstName,
       required this.lastName,
       required this.phoneNumber,
-      required this.fullAddress,
-      this.v});
+      required this.fullAddress});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -354,12 +338,10 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   final String phoneNumber;
   @override
   final String fullAddress;
-  @override
-  final int? v;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(role: $role, pendingOrders: $pendingOrders, deliveredOrders: $deliveredOrders, cancelledOrders: $cancelledOrders, wishlists: $wishlists, reviews: $reviews, numOfProductsInCart: $numOfProductsInCart, id: $id, email: $email, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, fullAddress: $fullAddress, v: $v)';
+    return 'User(role: $role, pendingOrders: $pendingOrders, deliveredOrders: $deliveredOrders, cancelledOrders: $cancelledOrders, wishlists: $wishlists, reviews: $reviews, numOfProductsInCart: $numOfProductsInCart, id: $id, email: $email, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, fullAddress: $fullAddress)';
   }
 
   @override
@@ -374,13 +356,12 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('wishlists', wishlists))
       ..add(DiagnosticsProperty('reviews', reviews))
       ..add(DiagnosticsProperty('numOfProductsInCart', numOfProductsInCart))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('_id', id))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('firstName', firstName))
       ..add(DiagnosticsProperty('lastName', lastName))
       ..add(DiagnosticsProperty('phoneNumber', phoneNumber))
-      ..add(DiagnosticsProperty('fullAddress', fullAddress))
-      ..add(DiagnosticsProperty('v', v));
+      ..add(DiagnosticsProperty('fullAddress', fullAddress));
   }
 
   @override
@@ -422,9 +403,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
                     .equals(other.phoneNumber, phoneNumber)) &&
             (identical(other.fullAddress, fullAddress) ||
                 const DeepCollectionEquality()
-                    .equals(other.fullAddress, fullAddress)) &&
-            (identical(other.v, v) ||
-                const DeepCollectionEquality().equals(other.v, v)));
+                    .equals(other.fullAddress, fullAddress)));
   }
 
   @override
@@ -442,8 +421,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       const DeepCollectionEquality().hash(firstName) ^
       const DeepCollectionEquality().hash(lastName) ^
       const DeepCollectionEquality().hash(phoneNumber) ^
-      const DeepCollectionEquality().hash(fullAddress) ^
-      const DeepCollectionEquality().hash(v);
+      const DeepCollectionEquality().hash(fullAddress);
 
   @JsonKey(ignore: true)
   @override
@@ -470,8 +448,7 @@ abstract class _User implements User {
       required String firstName,
       required String lastName,
       required String phoneNumber,
-      required String fullAddress,
-      int? v}) = _$_User;
+      required String fullAddress}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -501,8 +478,6 @@ abstract class _User implements User {
   String get phoneNumber => throw _privateConstructorUsedError;
   @override
   String get fullAddress => throw _privateConstructorUsedError;
-  @override
-  int? get v => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
