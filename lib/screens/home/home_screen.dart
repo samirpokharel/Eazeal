@@ -17,7 +17,18 @@ class HomeScreen extends StatelessWidget {
         ),
         preferredSize: const Size.fromHeight(90),
       ),
-      body: const Center(child: Text("Home Screen")),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: const [
+            FeatureBanner(
+              image: "assets/images/feature_banner_image.png",
+              boldText: "70% off",
+              title: "Dashain ko dhamaka",
+            )
+          ],
+        ),
+      ),
     );
   }
 }
