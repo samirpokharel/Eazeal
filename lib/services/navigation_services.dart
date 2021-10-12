@@ -16,4 +16,8 @@ class NavigationServices {
   void pop<T extends Object?>([T? result]) {
     navigatorKey.currentState!.pop(result);
   }
+
+  void popToFirst() {
+    navigatorKey.currentState?.popUntil((route) => route.isFirst);
+  }
 }

@@ -6,3 +6,6 @@ export './onbording/onbording_screen.dart';
 export './authentication/login.dart';
 export './authentication/signup.dart';
 export './authentication/forgot_password.dart';
+export './authentication/token_reciver.dart';
+
+export './wrapper.dart';

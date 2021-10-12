@@ -6,6 +6,7 @@ import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
 import 'package:eazeal/models/user/user_model.dart';
 import 'package:eazeal/providers.dart';
 import 'package:eazeal/repositories/auth/base_auth_repository.dart';
+import 'package:eazeal/screens/screens.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rx_shared_preferences/rx_shared_preferences.dart';
@@ -60,6 +61,7 @@ class AuthRepository extends BaseAuthRepository {
       "phoneNumber": phoneNumber,
       "fullAddress": address
     });
+    print(jsonUserData);
     try {
       Response response = await _reader(apiClientProvider).post(
         "/auth/signup",
@@ -101,12 +103,18 @@ class AuthRepository extends BaseAuthRepository {
         "/auth/forgot-password",
         data: json.encode({"email": email}),
       );
+      print(response.data);
 
       if (response.statusCode == 200) {
         debugPrint(response.data);
       }
     } on DioError catch (err) {
       throw CustomException(message: err.response!.data["message"]);
+    } finally {
+      _reader(navigationProvider).pushNamed(
+        TokenReciver.routeName,
+        arguments: TokenReciverType.forgotPasswordConformation,
+      );
     }
   }
 

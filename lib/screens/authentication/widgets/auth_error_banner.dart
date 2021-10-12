@@ -13,6 +13,7 @@ class AuthErrorBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialBanner(
+      padding: const EdgeInsets.all(10),
       leading: const Icon(Icons.error),
       backgroundColor: Colors.amberAccent,
       content: Text(message),
