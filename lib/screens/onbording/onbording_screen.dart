@@ -1,7 +1,10 @@
+import 'package:eazeal/config/preferences.dart';
 import 'package:eazeal/screens/onbording/onbording.dart';
+import 'package:eazeal/screens/splash/splash_screens.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rx_shared_preferences/src/interface/extensions.dart';
 
 class OnbordingScreen extends StatefulWidget {
   const OnbordingScreen({Key? key}) : super(key: key);
@@ -113,7 +116,10 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
                   height: 50,
                   minWidth: 200,
                   color: const Color(0xff506281),
-                  onPressed: () {},
+                  onPressed: () async{
+                    await Preferences.preferences.setBool("onbordingCompleted", true);
+                    Navigator.pushNamed(context, SplashScreen.routeName);
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),

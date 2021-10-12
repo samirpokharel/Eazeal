@@ -25,7 +25,7 @@ class MyApp extends ConsumerWidget {
       navigatorKey: watch(navigationProvider).navigatorKey,
       theme: ThemeUtils.light(),
       onGenerateRoute: AppRouter.onGenerateRoute,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: Wrapper.routeName,
     );
   }
 }
