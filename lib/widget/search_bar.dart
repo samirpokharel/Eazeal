@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
   final void Function(String)? onSearch;
-  final bool showProfile;
   const SearchBar({
     this.onSearch,
-    this.showProfile = true,
     Key? key,
   }) : super(key: key);
 
@@ -28,13 +26,6 @@ class SearchBar extends StatelessWidget {
                 ),
               ),
             ),
-            if (showProfile) const SizedBox(width: 10),
-            if (showProfile)
-              const CircleAvatar(
-                radius: 20,
-                backgroundColor: primaryColor,
-                child: Text("S"),
-              )
           ],
         ),
       ),

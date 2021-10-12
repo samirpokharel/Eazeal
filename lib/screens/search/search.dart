@@ -13,7 +13,6 @@ class SearchScreen extends StatelessWidget {
       
       appBar: PreferredSize(
         child: SearchBar(
-          showProfile: false,
           onSearch: (String term) {
             print(term);
           },
