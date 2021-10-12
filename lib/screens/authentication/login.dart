@@ -129,19 +129,10 @@ class _LoginState extends State<Login> {
                         onTap: widget.toggleScreen,
                       ),
                       if (authStateController.status == AuthStatus.error)
-                        MaterialBanner(
-                          leading: const Icon(Icons.error),
-                          backgroundColor: Colors.amberAccent,
-                          content: Text(authStateController.error!.message),
-                          actions: [
-                            IconButton(
-                              onPressed: () {
-                                authNotifierController.closeBanner();
-                              },
-                              icon: const Icon(Icons.close),
-                            )
-                          ],
-                        ),
+                        AuthErrorBanner(
+                          message: authStateController.error!.message,
+                          onClose: () => authNotifierController.closeBanner(),
+                        )
                     ],
                   ),
                 ),
