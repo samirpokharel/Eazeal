@@ -1,5 +1,7 @@
 import 'package:eazeal/config/constants.dart';
 import 'package:eazeal/providers.dart';
+import 'package:eazeal/screens/home/cateogory_bar.dart';
+import 'package:eazeal/screens/home/cateogry_product_grid.dart';
 import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/widget/widgets.dart';
 import 'package:flutter/material.dart';
@@ -12,36 +14,62 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, watch) {
     final bootNavBarController = watch(bottomNavBarProvider.notifier);
-    return Scaffold(
-      appBar: PreferredSize(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(context, name: "Mameer", onTap: () {
-                bootNavBarController.updateSelctedItem(BottomNavItem.profile);
-              }),
-              SearchBar(
-                onSearch: (String term) {},
-              ),
-            ],
+    // bootNavBarController.addListener((state) {
+    //   if (state == BottomNavItem.home) {
+    //     watch(productControllerProvider.notifier).getProduct("All");
+    //   }
+    // });
+    final categoryChipController = watch(categoryChipProvider.notifier);
+    return RefreshIndicator(
+      onRefresh: () async {
+        watch(categoryControllerProvider.notifier).getAllCategory();
+        watch(productControllerProvider.notifier).getProduct("All");
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(context, name: "Mameer", onTap: () {
+                  bootNavBarController.updateSelctedItem(BottomNavItem.profile);
+                }),
+              ],
+            ),
           ),
+          preferredSize: const Size.fromHeight(110),
         ),
-        preferredSize: const Size.fromHeight(200),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: const [
-              FeatureBanner(
-                image: "assets/images/feature_banner_image.png",
-                boldText: "70% off",
-                title: "Dashain ko dhamaka",
-              ),
-              SizedBox(height: 15),
-              Groupbar(title: "Category")
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                SearchBar(
+                  onSearch: (String term) {},
+                ),
+                const SizedBox(height: 20),
+                const FeatureBanner(
+                  image: "assets/images/feature_banner_image.png",
+                  boldText: "70% off",
+                  title: "Dashain ko dhamaka",
+                ),
+                const SizedBox(height: 15),
+                const Groupbar(title: "Category"),
+                const SizedBox(height: 15),
+                CategoryBar(
+                  selectedCategory: watch(categoryChipProvider),
+                  onSelected: (String category) {
+                    categoryChipController.onCategoryChange(category);
+                    watch(productControllerProvider.notifier)
+                        .getProduct(category);
+                  },
+                ),
+                const SizedBox(height: 15),
+                const Groupbar(title: "Products"),
+                const SizedBox(height: 15),
+                const CategoryProduct()
+              ],
+            ),
           ),
         ),
       ),

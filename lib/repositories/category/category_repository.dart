@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
@@ -22,21 +22,36 @@ class CategoryRepository extends BaseCategoryRepository {
             (cateogory) => Category.fromJson(cateogory as Map<String, dynamic>),
           ),
         );
-        return categories;
+        return [Category.empty().copyWith(categoryName: "All"), ...categories];
       } else {
         throw CustomException(message: response.data["message"]);
       }
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
+    }
+  }
+
+  String categoryName(String query) {
+    List<String> querys = query.split("/");
+    print(querys[0]);
+
+    if (query == "All") {
+      return "/all-products";
+    } else if (querys[0] == "search") {
+      return "/all-products/search?q=${querys[1]}";
+    } else {
+      return "/category/$query";
     }
   }
 
   @override
-  Future<List<Product>> getAllCategoryProduct(
-      {required String categoryName}) async {
+  Future<List<Product>> getProducts({
+    required String query,
+  }) async {
     try {
-      Response response =
-          await _reader(apiClientProvider).get("/category/$categoryName");
+      String name = categoryName(query);
+      Response response = await _reader(apiClientProvider).get(name);
+
       if (response.statusCode == 200) {
         List<Product> products = List.from(
           (response.data['products']).map(
@@ -48,7 +63,7 @@ class CategoryRepository extends BaseCategoryRepository {
         throw CustomException(message: response.data["message"]);
       }
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
     }
   }
 }

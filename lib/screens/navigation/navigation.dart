@@ -50,6 +50,7 @@ class NavigationScreen extends ConsumerWidget {
           selectedItem: bottomNavBarStateNotifier,
           onTap: (int index) {
             final selectedItem = _items.keys.toList()[index];
+           
             _selectBottomNavItem(
               context,
               selectedItem,

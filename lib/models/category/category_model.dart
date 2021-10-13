@@ -14,4 +14,10 @@ abstract class Category with _$Category {
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
+
+  factory Category.empty() => const Category(
+        id: "",
+        categoryName: "",
+        noOfProducts: 0,
+      );
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:eazeal/config/preferences.dart';
@@ -37,7 +38,7 @@ class AuthRepository extends BaseAuthRepository {
       }
       return user;
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
     }
   }
 
@@ -72,7 +73,7 @@ class AuthRepository extends BaseAuthRepository {
         debugPrint(response.data);
       }
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
     }
   }
 
@@ -92,7 +93,7 @@ class AuthRepository extends BaseAuthRepository {
       }
       return user;
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
     }
   }
 
@@ -109,7 +110,7 @@ class AuthRepository extends BaseAuthRepository {
         debugPrint(response.data);
       }
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
     } finally {
       _reader(navigationProvider).pushNamed(
         TokenReciver.routeName,
@@ -138,7 +139,7 @@ class AuthRepository extends BaseAuthRepository {
       }
       return user;
     } on DioError catch (err) {
-      throw CustomException(message: err.response!.data["message"]);
+      throw CustomException(message: "Something went wrong");
     }
   }
 
