@@ -11,7 +11,7 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
+      elevation: .5,
       toolbarHeight: 90,
       title: Padding(
         padding: const EdgeInsets.all(8.0),
