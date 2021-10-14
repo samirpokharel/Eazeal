@@ -1,8 +1,7 @@
 import 'package:eazeal/config/constants.dart';
-import 'package:eazeal/controller/auth_controller.dart';
+import 'package:eazeal/controller/controller.dart';
 import 'package:eazeal/providers.dart';
 import 'package:eazeal/screens/authentication/widgets/widgets.dart';
-import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/services/validation_services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

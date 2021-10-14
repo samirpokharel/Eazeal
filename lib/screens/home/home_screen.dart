@@ -1,9 +1,9 @@
-import 'package:eazeal/config/constants.dart';
-import 'package:eazeal/providers.dart';
-import 'package:eazeal/screens/home/cateogory_bar.dart';
-import 'package:eazeal/screens/home/cateogry_product_grid.dart';
+import 'package:eazeal/config/configs.dart';
 import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/widget/widgets.dart';
+export 'widgets/widgets.dart';
+
+import 'package:eazeal/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,11 +14,6 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, watch) {
     final bootNavBarController = watch(bottomNavBarProvider.notifier);
-    // bootNavBarController.addListener((state) {
-    //   if (state == BottomNavItem.home) {
-    //     watch(productControllerProvider.notifier).getProduct("All");
-    //   }
-    // });
     final categoryChipController = watch(categoryChipProvider.notifier);
     return RefreshIndicator(
       onRefresh: () async {

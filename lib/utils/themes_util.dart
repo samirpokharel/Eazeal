@@ -117,8 +117,6 @@ class ThemeUtils {
       tabBarTheme: const TabBarTheme(
         labelColor: primaryColor,
         unselectedLabelColor: Color(0xffABABAB),
-        
-
       ),
       inputDecorationTheme: inputDecorationThemeLight,
       primaryColor: primaryColor,

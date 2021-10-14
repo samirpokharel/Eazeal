@@ -1,4 +1,4 @@
-import 'package:eazeal/config/Router/app_router.dart';
+import 'package:eazeal/config/app_router.dart';
 import 'package:eazeal/screens/screens.dart';
 import 'package:flutter/material.dart';
 

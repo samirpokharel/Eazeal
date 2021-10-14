@@ -1,9 +1,7 @@
-import 'package:eazeal/config/constants.dart';
-import 'package:eazeal/controller/bottom_nab_bar_controller.dart';
+import 'package:eazeal/controller/controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:eazeal/providers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'widget/widgets.dart';
 

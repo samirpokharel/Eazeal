@@ -1,12 +1,10 @@
 import 'package:eazeal/config/constants.dart';
 import 'package:eazeal/providers.dart';
-import 'package:eazeal/screens/profile/tabs/dashboard.dart';
+import 'package:eazeal/screens/profile/tabs/tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'tabs/tabs.dart';
-
-enum ProfileTabs { dashboard, reviews, orders, wishlists }
 
 class ProfileScreen extends ConsumerWidget {
   static const String routeName = "/profileScreen";

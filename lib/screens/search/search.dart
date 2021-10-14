@@ -1,12 +1,12 @@
-import 'package:eazeal/config/constants.dart';
-import 'package:eazeal/controller/product_controller.dart';
-import 'package:eazeal/models/product/product_model.dart';
+import 'package:eazeal/config/configs.dart';
+import 'package:eazeal/controller/controller.dart';
+import 'package:eazeal/models/models.dart';
 import 'package:eazeal/providers.dart';
 import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/widget/widgets.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = "/search";
@@ -159,10 +159,7 @@ class ListProductCard extends StatelessWidget {
                     const Spacer(),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(
-                        Icons.favorite,
-                        color: Colors.grey[400],
-                      ),
+                      icon: Icon(Icons.favorite, color: Colors.grey[400]),
                     )
                   ],
                 ),

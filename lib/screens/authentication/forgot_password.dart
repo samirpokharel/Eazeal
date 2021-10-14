@@ -1,10 +1,10 @@
 import 'package:eazeal/config/constants.dart';
-import 'package:eazeal/controller/auth_controller.dart';
+import 'package:eazeal/controller/controller.dart';
 import 'package:eazeal/providers.dart';
 import 'package:eazeal/screens/authentication/widgets/widgets.dart';
-import 'package:eazeal/services/validation_services.dart';
+import 'package:eazeal/services/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/all.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ForgotPassword extends StatefulWidget {

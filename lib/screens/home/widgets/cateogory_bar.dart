@@ -1,8 +1,8 @@
-import 'package:eazeal/controller/category_controller.dart';
+import 'package:eazeal/controller/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../providers.dart';
+import '../../../providers.dart';
 
 class CategoryBar extends ConsumerWidget {
   final void Function(String)? onSelected;

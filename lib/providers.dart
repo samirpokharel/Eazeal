@@ -1,16 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:eazeal/controller/auth_controller.dart';
-import 'package:eazeal/controller/bottom_nab_bar_controller.dart';
-import 'package:eazeal/controller/category_chip_controller.dart';
-import 'package:eazeal/controller/category_controller.dart';
-import 'package:eazeal/controller/product_controller.dart';
-import 'package:eazeal/controller/search_controller.dart';
-import 'package:eazeal/helper/api_helper/api_client.dart';
-import 'package:eazeal/repositories/category/category_repository.dart';
+import 'package:eazeal/services/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'controller/controller.dart';
+import 'package:eazeal/helper/helpers.dart';
 import 'package:eazeal/repositories/repositories.dart';
 import 'package:eazeal/screens/screens.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import './services/services.dart';
 
 final navigationProvider = Provider<NavigationServices>((ref) {
   return NavigationServices();

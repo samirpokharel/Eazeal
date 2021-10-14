@@ -39,7 +39,6 @@ class AuthRepository extends BaseAuthRepository {
       return user;
     } on DioError catch (err) {
       if (err.type == DioErrorType.response) {
-        print("Response Error");
         throw CustomException(message: err.response!.data["message"]);
       }
       if (err.error is SocketException) {
@@ -122,8 +121,6 @@ class AuthRepository extends BaseAuthRepository {
         "/auth/forgot-password",
         data: json.encode({"email": email}),
       );
-      print(response.data);
-
       if (response.statusCode == 200) {
         debugPrint(response.data);
       }
