@@ -23,6 +23,10 @@ final categoryProvider = Provider<CategoryRepository>((ref) {
   return CategoryRepository(reader: ref.read);
 });
 
+final userRepositoryProvider = Provider<UserRepository>((ref) {
+  return UserRepository(reader: ref.read);
+});
+
 final authControllerProvider = StateNotifierProvider<AuthController, AuthState>(
   (ref) => AuthController(ref.read),
 );
@@ -42,7 +46,6 @@ final productControllerProvider =
   return ProductController(reader: ref.read)..getProduct("All");
 });
 
-
 final searchControllerProvider =
     StateNotifierProvider<SearchController, ProductState>((ref) {
   return SearchController(reader: ref.read);
@@ -52,3 +55,8 @@ final categoryChipProvider =
     StateNotifierProvider<CategoryChipController, String>((ref) {
   return CategoryChipController();
 });
+
+final userControllerProvider =
+    StateNotifierProvider<UserController, UserState>((ref) {
+  return UserController(reader: ref.read);
+}) ;

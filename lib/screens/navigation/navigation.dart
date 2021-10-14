@@ -48,7 +48,11 @@ class NavigationScreen extends ConsumerWidget {
           selectedItem: bottomNavBarStateNotifier,
           onTap: (int index) {
             final selectedItem = _items.keys.toList()[index];
-           
+
+            if (selectedItem == BottomNavItem.profile) {
+              watch(userControllerProvider.notifier).getCurrentUser();
+            }
+
             _selectBottomNavItem(
               context,
               selectedItem,

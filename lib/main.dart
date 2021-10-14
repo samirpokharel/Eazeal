@@ -1,3 +1,4 @@
+import 'package:eazeal/helper/api_helper/api_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rx_shared_preferences/rx_shared_preferences.dart';

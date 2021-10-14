@@ -1,9 +1,9 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
 import 'package:eazeal/models/product/product_model.dart';
 import 'package:eazeal/providers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class ProductState {}
