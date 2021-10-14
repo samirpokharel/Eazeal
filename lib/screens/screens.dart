@@ -14,5 +14,5 @@ export 'home/home_screen.dart';
 export 'search/search.dart';
 export 'cart/cart.dart';
 export 'profile/profile.dart';
-
+export 'product_detail/product_detail.dart';
 export 'wrapper.dart';

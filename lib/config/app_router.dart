@@ -1,3 +1,4 @@
+import 'package:eazeal/models/models.dart';
 import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/screens/splash/splash_screens.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,6 +31,10 @@ class AppRouter {
       settings: routeSettings,
       builder: (_) {
         switch (routeSettings.name) {
+          case ProductDetail.routeName:
+            return ProductDetail(
+              product: routeSettings.arguments as Product,
+            );
           default:
             return const ErrorScreen();
         }

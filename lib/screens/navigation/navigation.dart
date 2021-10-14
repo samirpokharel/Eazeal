@@ -50,7 +50,9 @@ class NavigationScreen extends ConsumerWidget {
             final selectedItem = _items.keys.toList()[index];
 
             if (selectedItem == BottomNavItem.profile) {
-              watch(userControllerProvider.notifier).getCurrentUser();
+              if (watch(userControllerProvider) is! UserSuccess) {
+                watch(userControllerProvider.notifier).getCurrentUser();
+              }
             }
 
             _selectBottomNavItem(

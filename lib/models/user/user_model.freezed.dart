@@ -356,7 +356,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('wishlists', wishlists))
       ..add(DiagnosticsProperty('reviews', reviews))
       ..add(DiagnosticsProperty('numOfProductsInCart', numOfProductsInCart))
-      ..add(DiagnosticsProperty('_id', id))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('firstName', firstName))
       ..add(DiagnosticsProperty('lastName', lastName))

@@ -7,14 +7,14 @@ part of 'category_model.dart';
 // **************************************************************************
 
 _$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
-      id: json['_id'] as String,
+      id: json['id'] as String,
       categoryName: json['categoryName'] as String,
       noOfProducts: json['noOfProducts'] as int,
     );
 
 Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
     <String, dynamic>{
-      '_id': instance.id,
+      'id': instance.id,
       'categoryName': instance.categoryName,
       'noOfProducts': instance.noOfProducts,
     };

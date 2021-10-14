@@ -113,6 +113,7 @@ class ThemeUtils {
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
+        elevation: .5
       ),
       tabBarTheme: const TabBarTheme(
         labelColor: primaryColor,
@@ -139,6 +140,8 @@ class ThemeUtils {
       appBarTheme: AppBarTheme(
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[900],
+        elevation: .5
+
       ),
       inputDecorationTheme: inputDecorationThemeDark,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(

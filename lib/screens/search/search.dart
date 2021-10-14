@@ -103,7 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
         ),
-      ),
+    ),
     );
   }
 }
@@ -116,69 +116,77 @@ class ListProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     TextTheme textStyle = Theme.of(context).textTheme;
 
-    return Container(
-      height: 120,
-      margin: const EdgeInsets.only(bottom: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(
+        context,
+        ProductDetail.routeName,
+        arguments: product,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.pink,
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(product.imageUrl[0]),
+      child: Container(
+        height: 120,
+        margin: const EdgeInsets.only(bottom: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.pink,
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(product.imageUrl[0]),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 20),
-          Expanded(
-            flex: 4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "Rs ${product.price}",
-                        style: textStyle.headline3?.copyWith(
-                          color: primaryColor,
+            const SizedBox(width: 20),
+            Expanded(
+              flex: 4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "Rs ${product.price}",
+                          style: textStyle.headline3?.copyWith(
+                            color: primaryColor,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
                       ),
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.favorite, color: Colors.grey[400]),
-                    )
-                  ],
-                ),
-                Text(
-                  product.productName,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    const Icon(Icons.star, size: 20, color: Color(0xffFFC531)),
-                    Text("(${product.totalRatings})")
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.favorite, color: Colors.grey[400]),
+                      )
+                    ],
+                  ),
+                  Text(
+                    product.productName,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Icon(Icons.star,
+                          size: 20, color: Color(0xffFFC531)),
+                      Text("(${product.totalRatings})")
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
