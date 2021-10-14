@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:eazeal/controller/product_controller.dart';
 import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
 import 'package:eazeal/models/product/product_model.dart';
@@ -17,17 +19,9 @@ class SearchController extends StateNotifier<ProductState> {
       state = ProductLoading();
       List<Product> products =
           await _reader(categoryProvider).getProducts(query: query);
-      if (mounted) {
-        state = ProductSuccess(products: products);
-      }
+      state = ProductSuccess(products: products);
     } on CustomException catch (e) {
       state = ProductFailed(exception: e);
-    }
-  }
-
-  void setInitial() {
-    if (mounted) {
-      state = ProductInitial();
     }
   }
 }

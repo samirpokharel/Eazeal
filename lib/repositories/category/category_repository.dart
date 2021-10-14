@@ -27,13 +27,15 @@ class CategoryRepository extends BaseCategoryRepository {
         throw CustomException(message: response.data["message"]);
       }
     } on DioError catch (err) {
-      throw CustomException(message: "Something went wrong");
+      if (err.type == DioErrorType.response) {
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      rethrow;
     }
   }
 
   String categoryName(String query) {
     List<String> querys = query.split("/");
-    print(querys[0]);
 
     if (query == "All") {
       return "/all-products";
@@ -63,7 +65,10 @@ class CategoryRepository extends BaseCategoryRepository {
         throw CustomException(message: response.data["message"]);
       }
     } on DioError catch (err) {
-      throw CustomException(message: "Something went wrong");
+      if (err.type == DioErrorType.response) {
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      rethrow;
     }
   }
 }

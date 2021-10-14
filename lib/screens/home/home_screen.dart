@@ -45,7 +45,12 @@ class HomeScreen extends ConsumerWidget {
             child: Column(
               children: [
                 SearchBar(
-                  onSearch: (String term) {},
+                  onSearch: (String term) {
+                    watch(searchControllerProvider.notifier)
+                        .searchProduct(term);
+                    watch(bottomNavBarProvider.notifier)
+                        .updateSelctedItem(BottomNavItem.search);
+                  },
                 ),
                 const SizedBox(height: 20),
                 const FeatureBanner(

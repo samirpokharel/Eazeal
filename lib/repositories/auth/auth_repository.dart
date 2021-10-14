@@ -38,6 +38,13 @@ class AuthRepository extends BaseAuthRepository {
       }
       return user;
     } on DioError catch (err) {
+      if (err.type == DioErrorType.response) {
+        print("Response Error");
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      if (err.error is SocketException) {
+        throw CustomException(message: "No Internet Connection");
+      }
       throw CustomException(message: "Something went wrong");
     }
   }
@@ -62,7 +69,6 @@ class AuthRepository extends BaseAuthRepository {
       "phoneNumber": phoneNumber,
       "fullAddress": address
     });
-    print(jsonUserData);
     try {
       Response response = await _reader(apiClientProvider).post(
         "/auth/signup",
@@ -73,6 +79,12 @@ class AuthRepository extends BaseAuthRepository {
         debugPrint(response.data);
       }
     } on DioError catch (err) {
+      if (err.type == DioErrorType.response) {
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      if (err.error is SocketException) {
+        throw CustomException(message: "No Internet Connection");
+      }
       throw CustomException(message: "Something went wrong");
     }
   }
@@ -93,6 +105,12 @@ class AuthRepository extends BaseAuthRepository {
       }
       return user;
     } on DioError catch (err) {
+      if (err.type == DioErrorType.response) {
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      if (err.error is SocketException) {
+        throw CustomException(message: "No Internet Connection");
+      }
       throw CustomException(message: "Something went wrong");
     }
   }
@@ -110,6 +128,12 @@ class AuthRepository extends BaseAuthRepository {
         debugPrint(response.data);
       }
     } on DioError catch (err) {
+      if (err.type == DioErrorType.response) {
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      if (err.error is SocketException) {
+        throw CustomException(message: "No Internet Connection");
+      }
       throw CustomException(message: "Something went wrong");
     } finally {
       _reader(navigationProvider).pushNamed(
@@ -139,6 +163,12 @@ class AuthRepository extends BaseAuthRepository {
       }
       return user;
     } on DioError catch (err) {
+      if (err.type == DioErrorType.response) {
+        throw CustomException(message: err.response!.data["message"]);
+      }
+      if (err.error is SocketException) {
+        throw CustomException(message: "No Internet Connection");
+      }
       throw CustomException(message: "Something went wrong");
     }
   }

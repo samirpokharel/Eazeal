@@ -114,6 +114,12 @@ class ThemeUtils {
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
+      tabBarTheme: const TabBarTheme(
+        labelColor: primaryColor,
+        unselectedLabelColor: Color(0xffABABAB),
+        
+
+      ),
       inputDecorationTheme: inputDecorationThemeLight,
       primaryColor: primaryColor,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(

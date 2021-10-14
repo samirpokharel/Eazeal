@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
 import 'package:eazeal/models/product/product_model.dart';
 import 'package:eazeal/providers.dart';
@@ -57,7 +59,7 @@ class ProductController extends StateNotifier<ProductState> {
       }
     } on CustomException catch (e) {
       state = ProductFailed(exception: e);
-    }
+    } 
   }
 
   void setInitial() {

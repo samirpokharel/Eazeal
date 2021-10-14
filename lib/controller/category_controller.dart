@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart' as fd;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,7 +29,6 @@ class CategorySuccess extends CategoryState {
   @override
   int get hashCode => categories.hashCode;
 }
-
 
 class CategoryFailed extends CategoryState {
   CustomException exception;
