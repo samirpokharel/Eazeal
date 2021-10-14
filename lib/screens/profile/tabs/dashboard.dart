@@ -16,7 +16,10 @@ class _DashboardState extends State<Dashboard> {
   @override
   void initState() {
     Future.delayed(Duration.zero).whenComplete(() {
-      context.read(userControllerProvider.notifier).getCurrentUser();
+      final userState = context.read(userControllerProvider);
+      if (userState is! UserSuccess) {
+        context.read(userControllerProvider.notifier).getCurrentUser();
+      }
     });
     super.initState();
   }

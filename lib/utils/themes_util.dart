@@ -24,7 +24,7 @@ class ThemeUtils {
       color: Colors.black,
     ),
     button: TextStyle(
-      fontSize: 20,
+      fontSize: 15,
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
@@ -62,7 +62,7 @@ class ThemeUtils {
       color: Colors.white,
     ),
     button: TextStyle(
-      fontSize: 20,
+      fontSize: 15,
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
@@ -111,10 +111,9 @@ class ThemeUtils {
         fillColor: MaterialStateColor.resolveWith((states) => Colors.black),
       ),
       appBarTheme: const AppBarTheme(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-        elevation: .5
-      ),
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
+          elevation: .5),
       tabBarTheme: const TabBarTheme(
         labelColor: primaryColor,
         unselectedLabelColor: Color(0xffABABAB),
@@ -138,11 +137,9 @@ class ThemeUtils {
     return ThemeData(
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.grey[900],
-        elevation: .5
-
-      ),
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.grey[900],
+          elevation: .5),
       inputDecorationTheme: inputDecorationThemeDark,
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,

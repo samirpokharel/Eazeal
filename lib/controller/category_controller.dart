@@ -62,4 +62,6 @@ class CategoryController extends StateNotifier<CategoryState> {
       state = CategoryFailed(exception: e);
     }
   }
+ 
+
 }

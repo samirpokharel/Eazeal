@@ -13,8 +13,9 @@ class ProductInitial extends ProductState {}
 class ProductLoading extends ProductState {}
 
 class ProductSuccess extends ProductState {
-  List<Product> products;
-  ProductSuccess({required this.products});
+  final List<Product> products;
+  final Product? singleProduct;
+  ProductSuccess({required this.products, this.singleProduct});
 
   @override
   bool operator ==(Object other) {
@@ -59,7 +60,25 @@ class ProductController extends StateNotifier<ProductState> {
       }
     } on CustomException catch (e) {
       state = ProductFailed(exception: e);
-    } 
+    }
+  }
+
+  void getSingleProduct(String productId, String categoryName) async {
+    if (state is ProductLoading) return;
+    try {
+      state = ProductLoading();
+      List<Product> products = await _reader(categoryProvider).getProducts(
+        query: "single-product/$categoryName/$productId",
+      );
+      if (mounted) {
+        state = ProductSuccess(
+          singleProduct: products[0],
+          products: (state as ProductSuccess).products,
+        );
+      }
+    } on CustomException catch (e) {
+      state = ProductFailed(exception: e);
+    }
   }
 
   void setInitial() {

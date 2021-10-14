@@ -9,7 +9,7 @@ part of 'cart_model.dart';
 _$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
       imageUrl:
           (json['imageUrl'] as List<dynamic>).map((e) => e as String).toList(),
-      id: json['id'] as String,
+      id: json['_id'] as String,
       price: json['price'] as int,
       productName: json['productName'] as String,
       quantity: json['quantity'] as int,
@@ -19,7 +19,7 @@ _$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
 
 Map<String, dynamic> _$$_CartToJson(_$_Cart instance) => <String, dynamic>{
       'imageUrl': instance.imageUrl,
-      'id': instance.id,
+      '_id': instance.id,
       'price': instance.price,
       'productName': instance.productName,
       'quantity': instance.quantity,

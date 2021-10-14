@@ -12,6 +12,10 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       noOfPeopleRated: json['noOfPeopleRated'] as int? ?? 0,
       noOfPurchases: json['noOfPurchases'] as int? ?? 0,
       price: json['price'] as int? ?? 0,
+      ratings: (json['ratings'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as int),
+          ) ??
+          {},
       id: json['id'] as String,
       categoryName: json['categoryName'] as String,
       productName: json['productName'] as String,
@@ -25,6 +29,7 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
       'noOfPeopleRated': instance.noOfPeopleRated,
       'noOfPurchases': instance.noOfPurchases,
       'price': instance.price,
+      'ratings': instance.ratings,
       'id': instance.id,
       'categoryName': instance.categoryName,
       'productName': instance.productName,

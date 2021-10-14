@@ -11,7 +11,9 @@ abstract class Product with _$Product {
     @Default(0) int totalRatings,
     @Default(0) int noOfPeopleRated,
     @Default(0) int noOfPurchases,
+
     @Default(0) int price,
+    @Default({}) Map<String, int> ratings,
     required String id,
     required String categoryName,
     required String productName,
@@ -20,4 +22,13 @@ abstract class Product with _$Product {
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+
+  factory Product.empty() => const Product(
+        categoryName: "",
+        id: "",
+        imageUrl: [],
+        productName: "",
+        productId: "",
+
+      );
 }

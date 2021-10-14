@@ -40,7 +40,10 @@ class CategoryRepository extends BaseCategoryRepository {
     if (query == "All") {
       return "/all-products";
     } else if (querys[0] == "search") {
+      // search/term
       return "/all-products/search?q=${querys[1]}";
+    } else if (querys[0] == "single-product") {
+      return "/${querys[0]}/${querys[1]}/${querys[2]}}";
     } else {
       return "/category/$query";
     }
@@ -53,16 +56,16 @@ class CategoryRepository extends BaseCategoryRepository {
     try {
       String name = categoryName(query);
       Response response = await _reader(apiClientProvider).get(name);
-
-      if (response.statusCode == 200) {
+      if (query.startsWith("single-product")) {
+        Product product = Product.fromJson(response.data);
+        return [product].toList();
+      } else {
         List<Product> products = List.from(
           (response.data['products']).map(
-            (cateogory) => Product.fromJson(cateogory as Map<String, dynamic>),
+            (product) => Product.fromJson(product),
           ),
         );
         return products;
-      } else {
-        throw CustomException(message: response.data["message"]);
       }
     } on DioError catch (err) {
       if (err.type == DioErrorType.response) {

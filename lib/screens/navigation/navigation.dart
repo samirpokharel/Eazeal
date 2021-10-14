@@ -1,3 +1,4 @@
+import 'package:eazeal/controller/cart_controller.dart';
 import 'package:eazeal/controller/controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:eazeal/providers.dart';
@@ -52,6 +53,14 @@ class NavigationScreen extends ConsumerWidget {
             if (selectedItem == BottomNavItem.profile) {
               if (watch(userControllerProvider) is! UserSuccess) {
                 watch(userControllerProvider.notifier).getCurrentUser();
+              }
+            }
+            if (selectedItem == BottomNavItem.cart) {
+              if (watch(cartControllerProvider) is! CartSuccess ||
+                  (watch(cartControllerProvider) as CartSuccess)
+                      .carts
+                      .isEmpty) {
+                watch(cartControllerProvider.notifier).getShoppingCartItems();
               }
             }
 

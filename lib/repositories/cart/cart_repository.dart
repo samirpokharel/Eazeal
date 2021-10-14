@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:eazeal/helper/helpers.dart';
 import 'package:eazeal/models/cart/cart_model.dart';
@@ -15,11 +17,16 @@ class CartRepository extends BaseCartRepository {
     required String categoryName,
   }) async {
     try {
+      final jsonData = json.encode({
+        "productId": productId,
+        "categoryName": categoryName,
+      });
       Response response = await _reader(apiClientProvider).post(
         "/shopping-cart",
+        data: jsonData,
       );
       List<Cart> carts = List.from(
-        response.data.map((cart) => Cart.fromJson(cart)),
+        response.data["shoppingCart"].map((cart) => Cart.fromJson(cart)),
       );
       return carts;
     } on DioError catch (err) {
@@ -43,13 +50,14 @@ class CartRepository extends BaseCartRepository {
   }
 
   @override
-  Future<List<Cart>> getShoppingCart()async  {
-     try {
+  Future<List<Cart>> getShoppingCart() async {
+    print("fetching...");
+    try {
       Response response = await _reader(apiClientProvider).get(
         "/shopping-cart",
       );
       List<Cart> carts = List.from(
-        response.data.map((cart) => Cart.fromJson(cart)),
+        response.data["shoppingCart"].map((cart) => Cart.fromJson(cart)),
       );
       return carts;
     } on DioError catch (err) {

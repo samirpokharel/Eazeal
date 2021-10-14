@@ -26,9 +26,14 @@ class HomeScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(context, name: "Mameer", onTap: () {
-                  bootNavBarController.updateSelctedItem(BottomNavItem.profile);
-                }),
+                _buildHeader(
+                  context,
+                  name: "Mameer",
+                  onTap: () {
+                    bootNavBarController
+                        .updateSelctedItem(BottomNavItem.profile);
+                  },
+                ),
               ],
             ),
           ),

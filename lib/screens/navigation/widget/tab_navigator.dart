@@ -17,8 +17,10 @@ class TabNavigator extends StatelessWidget {
     final routeBuilder = _routeBuilder();
     return Navigator(
       key: navigatorKey,
+  
       initialRoute: tabNavigatorRoot,
       onGenerateRoute: AppRouter.onGenerateNestedRoute,
+      
       onGenerateInitialRoutes: (_, initialRoute) {
         return [
           MaterialPageRoute(

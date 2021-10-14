@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:eazeal/controller/cart_controller.dart';
 import 'package:eazeal/services/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,6 +26,10 @@ final categoryProvider = Provider<CategoryRepository>((ref) {
 
 final userRepositoryProvider = Provider<UserRepository>((ref) {
   return UserRepository(reader: ref.read);
+});
+
+final cartRepositoryProvider = Provider<CartRepository>((ref) {
+  return CartRepository(reader: ref.read);
 });
 
 final authControllerProvider = StateNotifierProvider<AuthController, AuthState>(
@@ -59,4 +64,10 @@ final categoryChipProvider =
 final userControllerProvider =
     StateNotifierProvider<UserController, UserState>((ref) {
   return UserController(reader: ref.read);
-}) ;
+});
+
+final cartControllerProvider =
+    StateNotifierProvider<CartController, CartState>((ref) {
+  return CartController(reader: ref.read)..getShoppingCartItems();
+});
+
