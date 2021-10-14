@@ -6,3 +6,6 @@ export './user/base_user_respository.dart';
 
 export './category/base_category_repository.dart';
 export './category/category_repository.dart';
+
+export './cart/cart_repository.dart';
+export './cart/base_cart_repository.dart';
