@@ -18,7 +18,7 @@ class SearchController extends StateNotifier<ProductState> {
     try {
       state = ProductLoading();
       List<Product> products =
-          await _reader(categoryProvider).getProducts(query: query);
+          await _reader(categoryProvider).getProducts(query: query, page: 1);
       state = ProductSuccess(products: products);
     } on CustomException catch (e) {
       state = ProductFailed(exception: e);

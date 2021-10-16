@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:eazeal/config/preferences.dart';
+import 'package:eazeal/controller/token_controller.dart';
 import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
 import 'package:eazeal/models/user/user_model.dart';
 import 'package:eazeal/providers.dart';
@@ -135,7 +136,7 @@ class AuthRepository extends BaseAuthRepository {
     } finally {
       _reader(navigationProvider).pushNamed(
         TokenReciver.routeName,
-        arguments: TokenReciverType.forgotPasswordConformation,
+        arguments: TokenType.forgotPassword,
       );
     }
   }

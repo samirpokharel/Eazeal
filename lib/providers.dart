@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:eazeal/controller/cart_controller.dart';
+import 'package:eazeal/controller/token_controller.dart';
 import 'package:eazeal/controller/wishlists_controller.dart';
 import 'package:eazeal/models/models.dart';
 import 'package:eazeal/services/services.dart';
@@ -80,4 +81,9 @@ final cartControllerNotifierProvider =
 
 final wishiListProvider = ChangeNotifierProvider<MywishListNotifier>((ref) {
   return MywishListNotifier()..getWishlist();
+});
+
+
+final tokenNotifier = ChangeNotifierProvider<TokenNotifier>((ref) {
+  return TokenNotifier(reader: ref.read);
 });

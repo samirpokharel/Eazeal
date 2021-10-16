@@ -1,7 +1,9 @@
 import 'package:eazeal/config/constants.dart';
 import 'package:eazeal/controller/controller.dart';
 import 'package:eazeal/providers.dart';
+import 'package:eazeal/screens/profile/tabs/settings.dart';
 import 'package:eazeal/screens/screens.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -85,7 +87,21 @@ class _DashboardState extends State<Dashboard> {
                     Text(user.email, style: textTheme.subtitle2),
                     const SizedBox(height: 15),
                     TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) {
+                              return Scaffold(
+                                appBar: AppBar(
+                                  title: const Text("Settings"),
+                                ),
+                                body: const Settings(),
+                              );
+                            },
+                          ),
+                        );
+                      },
                       icon: const Icon(Icons.edit),
                       label: const Text("edit"),
                     ),

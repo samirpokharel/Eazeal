@@ -41,6 +41,7 @@ dependencies:
   freezed_annotation: ^0.14.0
   rx_shared_preferences: ^2.2.0
   carousel_slider: ^4.0.0
+  
 
 
 # dependency_overrides:

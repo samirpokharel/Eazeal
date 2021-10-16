@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:eazeal/config/preferences.dart';
+import 'package:eazeal/controller/token_controller.dart';
 import 'package:eazeal/helper/api_helper/custom_excpetion.dart';
 import 'package:eazeal/models/models.dart';
 import 'package:eazeal/providers.dart';
@@ -103,7 +104,7 @@ class AuthController extends StateNotifier<AuthState> {
       if (state.status != AuthStatus.error) {
         _reader(navigationProvider).pushNamed(
           TokenReciver.routeName,
-          arguments: TokenReciverType.signUpConformation,
+          arguments: TokenType.emailVerification,
         );
         state = AuthState.initial();
       }

@@ -54,7 +54,7 @@ class ProductController extends StateNotifier<ProductState> {
     try {
       state = ProductLoading();
       List<Product> products =
-          await _reader(categoryProvider).getProducts(query: categoryName);
+          await _reader(categoryProvider).getProducts(query: categoryName,page: 1);
       if (mounted) {
         state = ProductSuccess(products: products);
       }
@@ -69,6 +69,7 @@ class ProductController extends StateNotifier<ProductState> {
       state = ProductLoading();
       List<Product> products = await _reader(categoryProvider).getProducts(
         query: "single-product/$categoryName/$productId",
+        page: 1
       );
       if (mounted) {
         state = ProductSuccess(

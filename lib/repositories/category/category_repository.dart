@@ -52,6 +52,7 @@ class CategoryRepository extends BaseCategoryRepository {
   @override
   Future<List<Product>> getProducts({
     required String query,
+    required int page,
   }) async {
     try {
       String name = categoryName(query);

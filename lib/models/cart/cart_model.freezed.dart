@@ -23,16 +23,14 @@ class _$CartTearOff {
 
   _Cart call(
       {required List<String> imageUrl,
-      required String id,
       required int price,
       required String productName,
       required int quantity,
-      int itemQuantity = 0,
+      int itemQuantity = 1,
       required String productId,
       required String categoryName}) {
     return _Cart(
       imageUrl: imageUrl,
-      id: id,
       price: price,
       productName: productName,
       quantity: quantity,
@@ -52,8 +50,8 @@ const $Cart = _$CartTearOff();
 
 /// @nodoc
 mixin _$Cart {
-  List<String> get imageUrl => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  List<String> get imageUrl =>
+      throw _privateConstructorUsedError; // required String id,
   int get price => throw _privateConstructorUsedError;
   String get productName => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
@@ -72,7 +70,6 @@ abstract class $CartCopyWith<$Res> {
       _$CartCopyWithImpl<$Res>;
   $Res call(
       {List<String> imageUrl,
-      String id,
       int price,
       String productName,
       int quantity,
@@ -92,7 +89,6 @@ class _$CartCopyWithImpl<$Res> implements $CartCopyWith<$Res> {
   @override
   $Res call({
     Object? imageUrl = freezed,
-    Object? id = freezed,
     Object? price = freezed,
     Object? productName = freezed,
     Object? quantity = freezed,
@@ -105,10 +101,6 @@ class _$CartCopyWithImpl<$Res> implements $CartCopyWith<$Res> {
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -144,7 +136,6 @@ abstract class _$CartCopyWith<$Res> implements $CartCopyWith<$Res> {
   @override
   $Res call(
       {List<String> imageUrl,
-      String id,
       int price,
       String productName,
       int quantity,
@@ -165,7 +156,6 @@ class __$CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imageUrl = freezed,
-    Object? id = freezed,
     Object? price = freezed,
     Object? productName = freezed,
     Object? quantity = freezed,
@@ -178,10 +168,6 @@ class __$CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -215,11 +201,10 @@ class __$CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res>
 class _$_Cart implements _Cart {
   const _$_Cart(
       {required this.imageUrl,
-      required this.id,
       required this.price,
       required this.productName,
       required this.quantity,
-      this.itemQuantity = 0,
+      this.itemQuantity = 1,
       required this.productId,
       required this.categoryName});
 
@@ -227,15 +212,13 @@ class _$_Cart implements _Cart {
 
   @override
   final List<String> imageUrl;
-  @override
-  final String id;
-  @override
+  @override // required String id,
   final int price;
   @override
   final String productName;
   @override
   final int quantity;
-  @JsonKey(defaultValue: 0)
+  @JsonKey(defaultValue: 1)
   @override
   final int itemQuantity;
   @override
@@ -245,7 +228,7 @@ class _$_Cart implements _Cart {
 
   @override
   String toString() {
-    return 'Cart(imageUrl: $imageUrl, id: $id, price: $price, productName: $productName, quantity: $quantity, itemQuantity: $itemQuantity, productId: $productId, categoryName: $categoryName)';
+    return 'Cart(imageUrl: $imageUrl, price: $price, productName: $productName, quantity: $quantity, itemQuantity: $itemQuantity, productId: $productId, categoryName: $categoryName)';
   }
 
   @override
@@ -255,8 +238,6 @@ class _$_Cart implements _Cart {
             (identical(other.imageUrl, imageUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.imageUrl, imageUrl)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.price, price) ||
                 const DeepCollectionEquality().equals(other.price, price)) &&
             (identical(other.productName, productName) ||
@@ -280,7 +261,6 @@ class _$_Cart implements _Cart {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(imageUrl) ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(productName) ^
       const DeepCollectionEquality().hash(quantity) ^
@@ -302,7 +282,6 @@ class _$_Cart implements _Cart {
 abstract class _Cart implements Cart {
   const factory _Cart(
       {required List<String> imageUrl,
-      required String id,
       required int price,
       required String productName,
       required int quantity,
@@ -314,9 +293,7 @@ abstract class _Cart implements Cart {
 
   @override
   List<String> get imageUrl => throw _privateConstructorUsedError;
-  @override
-  String get id => throw _privateConstructorUsedError;
-  @override
+  @override // required String id,
   int get price => throw _privateConstructorUsedError;
   @override
   String get productName => throw _privateConstructorUsedError;

@@ -3,7 +3,9 @@ import 'package:eazeal/controller/cart_controller.dart';
 import 'package:eazeal/controller/controller.dart';
 import 'package:eazeal/models/models.dart';
 import 'package:eazeal/providers.dart';
+import 'package:eazeal/screens/cart/place_order.dart';
 import 'package:eazeal/screens/screens.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
@@ -35,7 +37,28 @@ class _CartScreenState extends State<CartScreen> {
           title: const Text("My Cart"),
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                final products =
+                    context.read(cartControllerNotifierProvider).carts;
+
+                final productJson = products
+                    .map((e) => {
+                          "imageurl": e.imageUrl,
+                          "productName": e.productName,
+                          "price": e.price,
+                          "quantity": e.itemQuantity,
+                          "productId": e.productId,
+                          "categoryName": e.categoryName,
+                        })
+                    .toList();
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => PlaceOrder(carts: products),
+                  ),
+                );
+                print(productJson);
+              },
               child: const Text(
                 "checkout",
                 style: TextStyle(fontSize: 16, color: primaryColor),
@@ -49,6 +72,7 @@ class _CartScreenState extends State<CartScreen> {
             final cartNotifier = watch(cartControllerNotifierProvider.notifier);
 
             if (cartState.cartStatus == CartStatus.success) {
+              debugPrint(cartState.totalPrice.toString());
               if (cartState.carts.isEmpty) {
                 return _buildErrorWidget(
                   "your shopping cart is empty",
@@ -62,9 +86,15 @@ class _CartScreenState extends State<CartScreen> {
                     return Container(
                       margin: const EdgeInsets.only(bottom: 20),
                       child: Dismissible(
-                        key: GlobalKey(debugLabel: cartState.carts[index].id),
+                        key: GlobalKey(
+                            debugLabel: cartState.carts[index].productId),
                         direction: DismissDirection.endToStart,
-                        background: Container(color: Colors.red),
+                        background: Container(
+                          padding: const EdgeInsets.all(30),
+                          alignment: Alignment.centerRight,
+                          color: Colors.red,
+                          child: const Icon(Icons.delete, color: Colors.white),
+                        ),
                         confirmDismiss: (DismissDirection direction) async {
                           return await showDialog(
                             context: context,

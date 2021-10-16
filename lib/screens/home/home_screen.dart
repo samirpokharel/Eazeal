@@ -40,41 +40,44 @@ class HomeScreen extends ConsumerWidget {
           preferredSize: const Size.fromHeight(110),
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                SearchBar(
-                  onSearch: (String term) {
-                    watch(searchControllerProvider.notifier)
-                        .searchProduct(term);
-                    watch(bottomNavBarProvider.notifier)
-                        .updateSelctedItem(BottomNavItem.search);
-                  },
+          child: Column(
+            children: [
+              SearchBar(
+                onTap: () {
+                  bootNavBarController.updateSelctedItem(
+                    BottomNavItem.search,
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    const FeatureBanner(
+                      image: "assets/images/feature_banner_image.png",
+                      boldText: "70% off",
+                      title: "Dashain ko dhamaka",
+                    ),
+                    const SizedBox(height: 15),
+                    const Groupbar(title: "Category"),
+                    const SizedBox(height: 15),
+                    CategoryBar(
+                      selectedCategory: watch(categoryChipProvider),
+                      onSelected: (String category) {
+                        categoryChipController.onCategoryChange(category);
+                        watch(productControllerProvider.notifier)
+                            .getProduct(category);
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    const Groupbar(title: "Products"),
+                    const SizedBox(height: 15),
+                    const CategoryProduct()
+                  ],
                 ),
-                const SizedBox(height: 20),
-                const FeatureBanner(
-                  image: "assets/images/feature_banner_image.png",
-                  boldText: "70% off",
-                  title: "Dashain ko dhamaka",
-                ),
-                const SizedBox(height: 15),
-                const Groupbar(title: "Category"),
-                const SizedBox(height: 15),
-                CategoryBar(
-                  selectedCategory: watch(categoryChipProvider),
-                  onSelected: (String category) {
-                    categoryChipController.onCategoryChange(category);
-                    watch(productControllerProvider.notifier)
-                        .getProduct(category);
-                  },
-                ),
-                const SizedBox(height: 15),
-                const Groupbar(title: "Products"),
-                const SizedBox(height: 15),
-                const CategoryProduct()
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),
@@ -107,14 +110,14 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
           const Spacer(),
-          GestureDetector(
-            onTap: onTap,
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: primaryColor,
-              child: Text(name.substring(0, 1).toUpperCase()),
-            ),
-          )
+          // GestureDetector(
+          //   onTap: onTap,
+          //   child: CircleAvatar(
+          //     radius: 20,
+          //     backgroundColor: primaryColor,
+          //     child: Text(name.substring(0, 1).toUpperCase()),
+          //   ),
+          // )
         ],
       ),
     );

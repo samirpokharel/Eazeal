@@ -1,5 +1,6 @@
 import 'package:eazeal/config/constants.dart';
 import 'package:eazeal/controller/auth_controller.dart';
+import 'package:eazeal/controller/token_controller.dart';
 import 'package:eazeal/screens/authentication/widgets/widgets.dart';
 import 'package:eazeal/services/validation_services.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +9,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../providers.dart';
 
-enum TokenReciverType { signUpConformation, forgotPasswordConformation, none }
-
 class TokenReciver extends StatefulWidget {
-  final TokenReciverType? tokenReciverType;
+  final TokenType tokenType;
+  final String? email;
   static const String routeName = "/tokenReciver";
 
-  const TokenReciver({Key? key, this.tokenReciverType = TokenReciverType.none})
+  const TokenReciver({Key? key, this.tokenType = TokenType.none,this.email})
       : super(key: key);
 
   @override
@@ -26,6 +26,8 @@ class _TokenReciverState extends State<TokenReciver> {
   late TextEditingController _tokenController;
   late TextEditingController _passwordController;
   late TextEditingController _conformPasswordController;
+  // late TextEditingController _emailController;
+
   late GlobalKey<FormState> _fromKey;
 
   @override
@@ -33,6 +35,7 @@ class _TokenReciverState extends State<TokenReciver> {
     _tokenController = TextEditingController();
     _passwordController = TextEditingController();
     _conformPasswordController = TextEditingController();
+    // _emailController = TextEditingController();
     _fromKey = GlobalKey<FormState>();
     super.initState();
   }
@@ -51,6 +54,8 @@ class _TokenReciverState extends State<TokenReciver> {
       builder: (context, watch, child) {
         final authNotifierController = watch(authControllerProvider.notifier);
         final authStateController = watch(authControllerProvider);
+
+        final tokenController = watch(tokenNotifier);
 
         return Scaffold(
           body: SingleChildScrollView(
@@ -74,8 +79,7 @@ class _TokenReciverState extends State<TokenReciver> {
                           ),
                           const Spacer(),
                           Text(
-                            widget.tokenReciverType ==
-                                    TokenReciverType.forgotPasswordConformation
+                            widget.tokenType == TokenType.forgotPassword
                                 ? "Reset Password"
                                 : "TOKEN",
                             style: textTheme.headline2?.copyWith(
@@ -104,8 +108,16 @@ class _TokenReciverState extends State<TokenReciver> {
                         },
                       ),
                       const SizedBox(height: 20),
-                      if (widget.tokenReciverType ==
-                          TokenReciverType.forgotPasswordConformation)
+                      // if (widget.tokenType == TokenType.emailConformation)
+                      //   TextFormField(
+                      //     controller: _emailController,
+                      //     decoration: const InputDecoration(hintText: "Email"),
+                      //     validator: (val) {
+                      //       return ValidationService.validateEmail(val);
+                      //     },
+                      //   ),
+
+                      if (widget.tokenType == TokenType.forgotPassword)
                         TextFormField(
                           obscureText: true,
                           controller: _passwordController,
@@ -117,8 +129,7 @@ class _TokenReciverState extends State<TokenReciver> {
                         ),
                       const SizedBox(height: 20),
 
-                      if (widget.tokenReciverType ==
-                          TokenReciverType.forgotPasswordConformation)
+                      if (widget.tokenType == TokenType.forgotPassword)
                         TextFormField(
                           obscureText: true,
                           controller: _conformPasswordController,
@@ -135,27 +146,33 @@ class _TokenReciverState extends State<TokenReciver> {
 
                       const Divider(),
                       AuthButton(
-                        text: widget.tokenReciverType ==
-                                TokenReciverType.forgotPasswordConformation
+                        text: widget.tokenType == TokenType.forgotPassword
                             ? "Reset Password "
                             : "Verify Token",
                         buttonStatus:
-                            authStateController.status == AuthStatus.loading
+                            tokenController.tokenStatus == TokenStatus.loading
                                 ? ButtonStatus.busy
                                 : ButtonStatus.idle,
                         onPressed: () {
                           if (_fromKey.currentState!.validate()) {
-                            if (widget.tokenReciverType ==
-                                TokenReciverType.signUpConformation) {
-                              authNotifierController.activateAccount(
-                                _tokenController.text,
-                              );
-                            } else if (widget.tokenReciverType ==
-                                TokenReciverType.forgotPasswordConformation) {
+                            if (widget.tokenType == TokenType.forgotPassword) {
                               authNotifierController.resetPassword(
                                 _tokenController.text,
                                 _passwordController.text,
                               );
+                            } else {
+                              if (widget.tokenType ==
+                                  TokenType.emailConformation) {
+                                tokenController.doJob(
+                                  "${_tokenController.text}/${widget.email} ",
+                                  widget.tokenType,
+                                );
+                              } else {
+                                tokenController.doJob(
+                                  _tokenController.text,
+                                  widget.tokenType,
+                                );
+                              }
                             }
                           }
                         },

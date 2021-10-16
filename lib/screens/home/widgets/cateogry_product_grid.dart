@@ -7,9 +7,14 @@ import 'package:eazeal/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CategoryProduct extends StatelessWidget {
+class CategoryProduct extends StatefulWidget {
   const CategoryProduct({Key? key}) : super(key: key);
 
+  @override
+  State<CategoryProduct> createState() => _CategoryProductState();
+}
+
+class _CategoryProductState extends State<CategoryProduct> {
   @override
   Widget build(BuildContext context) {
     bool isLanscape =

@@ -1,3 +1,4 @@
+import 'package:eazeal/controller/token_controller.dart';
 import 'package:eazeal/models/models.dart';
 import 'package:eazeal/screens/screens.dart';
 import 'package:eazeal/screens/splash/splash_screens.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   static Route<CupertinoPageRoute> onGenerateRoute(RouteSettings settings) {
+    
     debugPrint("Route: ${settings.name}");
     return CupertinoPageRoute(builder: (_) {
       switch (settings.name) {
@@ -17,7 +19,8 @@ class AppRouter {
           return const ForgotPassword();
         case TokenReciver.routeName:
           return TokenReciver(
-            tokenReciverType: settings.arguments as TokenReciverType,
+            tokenType: settings.arguments as TokenType,
+            
           );
         default:
           return const ErrorScreen();

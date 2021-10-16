@@ -3,10 +3,24 @@ import 'package:eazeal/controller/controller.dart';
 import 'package:eazeal/models/models.dart';
 import 'package:eazeal/providers.dart';
 import 'package:eazeal/screens/screens.dart';
+import 'package:eazeal/services/infinity_scroll_services.dart';
 import 'package:eazeal/widget/widgets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class SearchScreenPaginated extends InfiniteListView<Product> {
+  @override
+  Widget getItemWidget(Product item) {
+    return ListProductCard(product: item);
+  }
+
+  @override
+  Future<List<Product>> getListData(int? pageNumber) {
+    // TODO: implement getListData
+    throw UnimplementedError();
+  }
+}
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = "/search";

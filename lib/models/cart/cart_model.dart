@@ -12,11 +12,11 @@ part 'cart_model.g.dart';
 abstract class Cart with _$Cart {
   const factory Cart({
     required List<String> imageUrl,
-    required String id,
+    // required String id,
     required int price,
     required String productName,
     required int quantity,
-    @Default(0) int itemQuantity,
+    @Default(1) int itemQuantity,
     required String productId,
     required String categoryName,
   }) = _Cart;

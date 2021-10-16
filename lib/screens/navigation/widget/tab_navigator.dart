@@ -48,7 +48,7 @@ class TabNavigator extends StatelessWidget {
       case BottomNavItem.cart:
         return const CartScreen();
       case BottomNavItem.profile:
-        return const ProfileScreen();
+        return ProfileScreen();
       default:
         return const Scaffold();
     }

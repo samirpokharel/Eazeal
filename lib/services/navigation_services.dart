@@ -13,6 +13,10 @@ class NavigationServices {
     );
   }
 
+  Future<T?> push<T extends Object?>(Route<T> route) {
+    return navigatorKey.currentState!.push(route);
+  }
+
   void pop<T extends Object?>([T? result]) {
     navigatorKey.currentState!.pop(result);
   }

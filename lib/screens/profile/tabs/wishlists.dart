@@ -27,10 +27,17 @@ class _WishlistsState extends State<Wishlists> {
       builder: (context, watch, child) {
         final wishlistState = watch(wishiListProvider);
         if (wishlistState.wishlistStatus == WishlistStatus.success) {
+          if (wishlistState.products.isEmpty) {
+            return const ErrorWidet(
+              message: "you  have no wishlist product",
+              wentWrongMessage: "No Product Found",
+            );
+          }
           return ListView.builder(
             itemCount: wishlistState.products.length,
             itemBuilder: (context, int index) {
               Product product = wishlistState.products[index];
+
               return Dismissible(
                 key: GlobalKey(debugLabel: product.id),
                 direction: DismissDirection.endToStart,
