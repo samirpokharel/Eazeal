@@ -27,6 +27,8 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     _buildCard({required String title, required String value}) {
       return Container(
@@ -82,10 +84,15 @@ class _DashboardState extends State<Dashboard> {
                     const SizedBox(height: 10),
                     Text(user.email, style: textTheme.subtitle2),
                     const SizedBox(height: 15),
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.edit),
+                      label: const Text("edit"),
+                    ),
                     const Divider(),
                     const SizedBox(height: 15),
                     GridView.count(
-                      crossAxisCount: 2,
+                      crossAxisCount: isLandscape ? 4 : 2,
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 20,
                       shrinkWrap: true,

@@ -30,48 +30,44 @@ class NavigationScreen extends ConsumerWidget {
   Widget build(BuildContext context, watch) {
     final bottomNavBarNotifier = watch(bottomNavBarProvider.notifier);
     final bottomNavBarStateNotifier = watch(bottomNavBarProvider);
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        body: Stack(
-          children: _items
-              .map((item, _) {
-                return MapEntry(
-                  item,
-                  _buildOffstageWidget(item, item == bottomNavBarStateNotifier),
-                );
-              })
-              .values
-              .toList(),
-        ),
-        bottomNavigationBar: BottomNavBar(
-          items: _items,
-          selectedItem: bottomNavBarStateNotifier,
-          onTap: (int index) {
-            final selectedItem = _items.keys.toList()[index];
+    return Scaffold(
+      body: Stack(
+        children: _items
+            .map((item, _) {
+              return MapEntry(
+                item,
+                _buildOffstageWidget(item, item == bottomNavBarStateNotifier),
+              );
+            })
+            .values
+            .toList(),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        items: _items,
+        selectedItem: bottomNavBarStateNotifier,
+        onTap: (int index) {
+          final selectedItem = _items.keys.toList()[index];
 
-            if (selectedItem == BottomNavItem.profile) {
-              if (watch(userControllerProvider) is! UserSuccess) {
-                watch(userControllerProvider.notifier).getCurrentUser();
-              }
+          if (selectedItem == BottomNavItem.profile) {
+            if (watch(userControllerProvider) is! UserSuccess) {
+              watch(userControllerProvider.notifier).getCurrentUser();
             }
-            if (selectedItem == BottomNavItem.cart) {
-              if (watch(cartControllerProvider) is! CartSuccess ||
-                  (watch(cartControllerProvider) as CartSuccess)
-                      .carts
-                      .isEmpty) {
-                watch(cartControllerProvider.notifier).getShoppingCartItems();
-              }
+            watch(wishiListProvider.notifier).getWishlist();
+          }
+          if (selectedItem == BottomNavItem.cart) {
+            if (watch(cartControllerNotifierProvider).cartStatus !=
+                CartStatus.success) {
+              watch(cartControllerNotifierProvider.notifier).getAllCart();
             }
+          }
 
-            _selectBottomNavItem(
-              context,
-              selectedItem,
-              selectedItem == bottomNavBarStateNotifier,
-              bottomNavBarNotifier,
-            );
-          },
-        ),
+          _selectBottomNavItem(
+            context,
+            selectedItem,
+            selectedItem == bottomNavBarStateNotifier,
+            bottomNavBarNotifier,
+          );
+        },
       ),
     );
   }

@@ -12,6 +12,8 @@ class CategoryProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLanscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     return Consumer(
       builder: (context, watch, child) {
         final categoryProduct = watch(productControllerProvider);
@@ -27,8 +29,8 @@ class CategoryProduct extends StatelessWidget {
           return GridView.builder(
             shrinkWrap: true,
             primary: false,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: isLanscape ? 4 : 2,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
               childAspectRatio: 2 / 2.2,

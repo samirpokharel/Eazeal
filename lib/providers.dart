@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:eazeal/controller/cart_controller.dart';
+import 'package:eazeal/controller/wishlists_controller.dart';
+import 'package:eazeal/models/models.dart';
 import 'package:eazeal/services/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -66,8 +68,16 @@ final userControllerProvider =
   return UserController(reader: ref.read);
 });
 
-final cartControllerProvider =
-    StateNotifierProvider<CartController, CartState>((ref) {
-  return CartController(reader: ref.read)..getShoppingCartItems();
+// final cartControllerProvider =
+//     StateNotifierProvider<CartController, CartState>((ref) {
+//   return CartController(reader: ref.read)..getShoppingCartItems();
+// });
+
+final cartControllerNotifierProvider =
+    ChangeNotifierProvider<CartControllerNotifier>((ref) {
+  return CartControllerNotifier(reader: ref.read);
 });
 
+final wishiListProvider = ChangeNotifierProvider<MywishListNotifier>((ref) {
+  return MywishListNotifier()..getWishlist();
+});

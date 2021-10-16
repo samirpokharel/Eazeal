@@ -28,6 +28,7 @@ class _$ProductTearOff {
       int noOfPurchases = 0,
       int price = 0,
       Map<String, int> ratings = const {},
+      bool isFavorite = false,
       required String id,
       required String categoryName,
       required String productName,
@@ -39,6 +40,7 @@ class _$ProductTearOff {
       noOfPurchases: noOfPurchases,
       price: price,
       ratings: ratings,
+      isFavorite: isFavorite,
       id: id,
       categoryName: categoryName,
       productName: productName,
@@ -62,6 +64,7 @@ mixin _$Product {
   int get noOfPurchases => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   Map<String, int> get ratings => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get categoryName => throw _privateConstructorUsedError;
   String get productName => throw _privateConstructorUsedError;
@@ -83,6 +86,7 @@ abstract class $ProductCopyWith<$Res> {
       int noOfPurchases,
       int price,
       Map<String, int> ratings,
+      bool isFavorite,
       String id,
       String categoryName,
       String productName,
@@ -105,6 +109,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? noOfPurchases = freezed,
     Object? price = freezed,
     Object? ratings = freezed,
+    Object? isFavorite = freezed,
     Object? id = freezed,
     Object? categoryName = freezed,
     Object? productName = freezed,
@@ -135,6 +140,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
               as Map<String, int>,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -167,6 +176,7 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       int noOfPurchases,
       int price,
       Map<String, int> ratings,
+      bool isFavorite,
       String id,
       String categoryName,
       String productName,
@@ -190,6 +200,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object? noOfPurchases = freezed,
     Object? price = freezed,
     Object? ratings = freezed,
+    Object? isFavorite = freezed,
     Object? id = freezed,
     Object? categoryName = freezed,
     Object? productName = freezed,
@@ -220,6 +231,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
               as Map<String, int>,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -250,6 +265,7 @@ class _$_Product implements _Product {
       this.noOfPurchases = 0,
       this.price = 0,
       this.ratings = const {},
+      this.isFavorite = false,
       required this.id,
       required this.categoryName,
       required this.productName,
@@ -275,6 +291,9 @@ class _$_Product implements _Product {
   @JsonKey(defaultValue: const {})
   @override
   final Map<String, int> ratings;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isFavorite;
   @override
   final String id;
   @override
@@ -286,7 +305,7 @@ class _$_Product implements _Product {
 
   @override
   String toString() {
-    return 'Product(imageUrl: $imageUrl, totalRatings: $totalRatings, noOfPeopleRated: $noOfPeopleRated, noOfPurchases: $noOfPurchases, price: $price, ratings: $ratings, id: $id, categoryName: $categoryName, productName: $productName, productId: $productId)';
+    return 'Product(imageUrl: $imageUrl, totalRatings: $totalRatings, noOfPeopleRated: $noOfPeopleRated, noOfPurchases: $noOfPurchases, price: $price, ratings: $ratings, isFavorite: $isFavorite, id: $id, categoryName: $categoryName, productName: $productName, productId: $productId)';
   }
 
   @override
@@ -310,6 +329,9 @@ class _$_Product implements _Product {
             (identical(other.ratings, ratings) ||
                 const DeepCollectionEquality()
                     .equals(other.ratings, ratings)) &&
+            (identical(other.isFavorite, isFavorite) ||
+                const DeepCollectionEquality()
+                    .equals(other.isFavorite, isFavorite)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.categoryName, categoryName) ||
@@ -332,6 +354,7 @@ class _$_Product implements _Product {
       const DeepCollectionEquality().hash(noOfPurchases) ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(ratings) ^
+      const DeepCollectionEquality().hash(isFavorite) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(categoryName) ^
       const DeepCollectionEquality().hash(productName) ^
@@ -356,6 +379,7 @@ abstract class _Product implements Product {
       int noOfPurchases,
       int price,
       Map<String, int> ratings,
+      bool isFavorite,
       required String id,
       required String categoryName,
       required String productName,
@@ -375,6 +399,8 @@ abstract class _Product implements Product {
   int get price => throw _privateConstructorUsedError;
   @override
   Map<String, int> get ratings => throw _privateConstructorUsedError;
+  @override
+  bool get isFavorite => throw _privateConstructorUsedError;
   @override
   String get id => throw _privateConstructorUsedError;
   @override

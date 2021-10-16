@@ -15,20 +15,23 @@ class TabNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routeBuilder = _routeBuilder();
-    return Navigator(
-      key: navigatorKey,
-  
-      initialRoute: tabNavigatorRoot,
-      onGenerateRoute: AppRouter.onGenerateNestedRoute,
-      
-      onGenerateInitialRoutes: (_, initialRoute) {
-        return [
-          MaterialPageRoute(
-            settings: const RouteSettings(name: tabNavigatorRoot),
-            builder: (context) => routeBuilder[initialRoute]!(context),
-          ),
-        ];
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
       },
+      child: Navigator(
+        key: navigatorKey,
+        initialRoute: tabNavigatorRoot,
+        onGenerateRoute: AppRouter.onGenerateNestedRoute,
+        onGenerateInitialRoutes: (_, initialRoute) {
+          return [
+            MaterialPageRoute(
+              settings: const RouteSettings(name: tabNavigatorRoot),
+              builder: (context) => routeBuilder[initialRoute]!(context),
+            ),
+          ];
+        },
+      ),
     );
   }
 

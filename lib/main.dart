@@ -11,6 +11,8 @@ import 'package:eazeal/providers.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Preferences.preferences = RxSharedPreferences.getInstance();
+  Preferences.pref = await SharedPreferences.getInstance();
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

@@ -14,7 +14,7 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, watch) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           elevation: .5,
@@ -27,6 +27,7 @@ class ProfileScreen extends ConsumerWidget {
               Tab(text: "reviews"),
               Tab(text: "orders"),
               Tab(text: "wishlists"),
+              Tab(text: "Setting"),
             ],
           ),
           actions: [
@@ -46,6 +47,7 @@ class ProfileScreen extends ConsumerWidget {
               Orders(),
               Reviews(),
               Wishlists(),
+              Settings()
             ],
           ),
         ),

@@ -11,9 +11,9 @@ abstract class Product with _$Product {
     @Default(0) int totalRatings,
     @Default(0) int noOfPeopleRated,
     @Default(0) int noOfPurchases,
-
     @Default(0) int price,
     @Default({}) Map<String, int> ratings,
+    @Default(false) bool isFavorite,
     required String id,
     required String categoryName,
     required String productName,
@@ -29,6 +29,5 @@ abstract class Product with _$Product {
         imageUrl: [],
         productName: "",
         productId: "",
-
       );
 }

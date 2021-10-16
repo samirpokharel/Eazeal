@@ -16,6 +16,7 @@ abstract class Cart with _$Cart {
     required int price,
     required String productName,
     required int quantity,
+    @Default(0) int itemQuantity,
     required String productId,
     required String categoryName,
   }) = _Cart;

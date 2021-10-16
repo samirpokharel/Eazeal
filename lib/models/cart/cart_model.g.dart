@@ -13,6 +13,7 @@ _$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
       price: json['price'] as int,
       productName: json['productName'] as String,
       quantity: json['quantity'] as int,
+      itemQuantity: json['itemQuantity'] as int? ?? 0,
       productId: json['productId'] as String,
       categoryName: json['categoryName'] as String,
     );
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$_CartToJson(_$_Cart instance) => <String, dynamic>{
       'price': instance.price,
       'productName': instance.productName,
       'quantity': instance.quantity,
+      'itemQuantity': instance.itemQuantity,
       'productId': instance.productId,
       'categoryName': instance.categoryName,
     };

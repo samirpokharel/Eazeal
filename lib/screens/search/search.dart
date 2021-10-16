@@ -103,7 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
         ),
-    ),
+      ),
     );
   }
 }
@@ -164,7 +164,11 @@ class ListProductCard extends StatelessWidget {
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context
+                              .read(wishiListProvider.notifier)
+                              .addToWishList(product);
+                        },
                         icon: Icon(Icons.favorite, color: Colors.grey[400]),
                       )
                     ],

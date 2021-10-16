@@ -16,6 +16,7 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
             (k, e) => MapEntry(k, e as int),
           ) ??
           {},
+      isFavorite: json['isFavorite'] as bool? ?? false,
       id: json['id'] as String,
       categoryName: json['categoryName'] as String,
       productName: json['productName'] as String,
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
       'noOfPurchases': instance.noOfPurchases,
       'price': instance.price,
       'ratings': instance.ratings,
+      'isFavorite': instance.isFavorite,
       'id': instance.id,
       'categoryName': instance.categoryName,
       'productName': instance.productName,
