@@ -41,23 +41,12 @@ class _CartScreenState extends State<CartScreen> {
                 final products =
                     context.read(cartControllerNotifierProvider).carts;
 
-                final productJson = products
-                    .map((e) => {
-                          "imageurl": e.imageUrl,
-                          "productName": e.productName,
-                          "price": e.price,
-                          "quantity": e.itemQuantity,
-                          "productId": e.productId,
-                          "categoryName": e.categoryName,
-                        })
-                    .toList();
                 Navigator.push(
                   context,
                   CupertinoPageRoute(
                     builder: (context) => PlaceOrder(carts: products),
                   ),
                 );
-                print(productJson);
               },
               child: const Text(
                 "checkout",

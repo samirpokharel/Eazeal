@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:eazeal/controller/cart_controller.dart';
+import 'package:eazeal/controller/order_controller.dart';
 import 'package:eazeal/controller/token_controller.dart';
 import 'package:eazeal/controller/wishlists_controller.dart';
 import 'package:eazeal/models/models.dart';
+import 'package:eazeal/repositories/order/order_repository.dart';
 import 'package:eazeal/services/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,6 +23,10 @@ final apiClientProvider = Provider<Dio>((ref) {
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(reader: ref.read);
+});
+
+final orderRepositoryProvider = Provider<OrderRepository>((ref) {
+  return OrderRepository(reader: ref.read);
 });
 
 final categoryProvider = Provider<CategoryRepository>((ref) {
@@ -83,7 +89,10 @@ final wishiListProvider = ChangeNotifierProvider<MywishListNotifier>((ref) {
   return MywishListNotifier()..getWishlist();
 });
 
-
 final tokenNotifier = ChangeNotifierProvider<TokenNotifier>((ref) {
   return TokenNotifier(reader: ref.read);
+});
+
+final orderNotifier = ChangeNotifierProvider<OrderController>((ref) {
+  return OrderController(reader: ref.read)..getUserOrder();
 });

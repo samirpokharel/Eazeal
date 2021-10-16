@@ -1,6 +1,7 @@
 import 'package:eazeal/config/constants.dart';
 import 'package:eazeal/controller/cart_controller.dart';
 import 'package:eazeal/controller/controller.dart';
+import 'package:eazeal/controller/order_controller.dart';
 import 'package:eazeal/models/models.dart';
 import 'package:eazeal/providers.dart';
 import 'package:eazeal/screens/authentication/widgets/widgets.dart';
@@ -15,6 +16,8 @@ class PlaceOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartController = context.read(cartControllerNotifierProvider);
+    final orderController = context.read(orderNotifier);
+
     final user = (context.read(userControllerProvider) as UserSuccess).user;
 
     return Scaffold(
@@ -119,7 +122,13 @@ class PlaceOrder extends StatelessWidget {
               const SizedBox(height: 30),
               AuthButton(
                 text: "Conform Order",
-                onPressed: () {},
+                buttonStatus: orderController.orderControllerStatus ==
+                        OrderControllerStatus.loading
+                    ? ButtonStatus.busy
+                    : ButtonStatus.idle,
+                onPressed: () {
+                  orderController.placeAnOrder(carts);
+                },
               )
             ],
           ),
