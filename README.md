@@ -1,16 +1,25 @@
-# eazeal
+# Eazel
 
-A new Flutter project.
+an eccomerce application 
 
-## Getting Started
+### Cloning Repo
 
-This project is a starting point for a Flutter application.
+Using Https:
+```bash
+git clone https://github.com/samirpokharel/Eazeal.git
+````
 
-A few resources to get you started if this is your first Flutter project:
+## Using SSH ([Setup SSH](https://ramankarki.hashnode.dev/what-is-ssh-or-why-it-is-useful-or-how-to-setup-ssh-keys-on-github-and-bitbucket)):
+```bash
+git clone git@github.com:samirpokharel/Eazeal.git
+````
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Getting Dependency
+```bash
+flutter pub get
+ ```
+ 
+ ## Figma UI: 
+ Figma UI(https://www.figma.com/file/Zxn26ZssdNamNCAQUMipj9/Eazeal-App-UI?node-id=0%3A1)
+ 
+ ![image](https://user-images.githubusercontent.com/56714863/144090683-65e478bb-f87f-4c54-a372-d5764eed3682.png)
